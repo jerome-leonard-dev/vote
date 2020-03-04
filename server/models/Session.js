@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     })
   
     Session.associate = function (models) {
+      Session.hasMany(models.Question)
     }
   
     return Session
