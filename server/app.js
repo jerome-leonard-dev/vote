@@ -6,6 +6,9 @@ const morgan = require('morgan')
 const {sequelize} = require('./models')
 
 const app = express();
+
+const SessionController = require('./controllers/SessionsController')
+
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
@@ -20,6 +23,9 @@ app.get('/api/test', function(req,res){
         }]
     );
 });
+
+app.get('/api/session',SessionController.list);
+app.post('/api/session',SessionController.create);
 
 sequelize.sync({force: false})
   .then(() => {
