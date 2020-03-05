@@ -1,5 +1,7 @@
 const {Session, Question, Answer} = require('../models')
 
+const crypto = require('crypto')
+
 module.exports = {
     async list( req,res){
         try{
@@ -12,11 +14,16 @@ module.exports = {
     },
     async get( req,res){
         try{
-            const session = await Session.findByOne({
+            const session = await Session.findOne({
                 where: {
                     id : req.params.sessionId
                 },
-                include: [Question, Answer]
+                include: [
+                    {
+                        model: Question,
+                        include : [Answer]
+                    }
+                ]
             })
             res.send(session)
         } catch (e) {
@@ -26,6 +33,7 @@ module.exports = {
     },
     async create( req, res){
         try{
+            req.body.hash = crypto.randomBytes(20).toString('hex')
             const session = await Session.create(req.body)
             res.send(session)
         } catch (e) {

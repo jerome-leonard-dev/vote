@@ -3,8 +3,8 @@ const {Answer} = require('../models')
 module.exports = {
     async list( req,res){
         try{
-            const Answers = await Answer.findAll()
-            res.send(Answers)
+            const answers = await Answer.findAll()
+            res.send(answers)
         } catch (e) {
             console.log(e)
             res.status(500).send({error:"Une erreur est survenue"})
@@ -12,8 +12,8 @@ module.exports = {
     },
     async create( req, res){
         try{
-            const Answer = await Answer.create(req.body)
-            res.send(Answer)
+            const answer = await Answer.create(req.body)
+            res.send(answer)
         } catch (e) {
             console.log(e)
             res.status(500).send({error:"Une erreur est survenue"})
