@@ -14,14 +14,22 @@
       }
     },
     created () {
-        fetch("api/session", {
-        "method": "GET"
+        axios({
+            "method": "GET",
+            "url": "api/session"
+        }).then(response => {
+            if( response.status == 200){
+              reponse = response.data
+              console.log(response);
+            } else {
+              console.log(response)
+            }
+        }).catch(response=>{
+          console.log('catch')
+          console.log(response)
+        }).then(()=>{
+          console.log('finally')
         })
-        .then(response => response.json())
-        .then(response => {
-            reponse = response
-            console.log(reponse)
-        });
     }
   }
 </script>
