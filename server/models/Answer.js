@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   
     Answer.associate = function (models) {
         Answer.belongsTo(models.Question)
+        Answer.hasMany(models.Vote)
     }
   
     return Answer

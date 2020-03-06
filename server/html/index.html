@@ -1,19 +1,23 @@
 <html>
     <head>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src = './components/Hello.js'></script>
+<script src="https://unpkg.com/http-vue-loader"></script>
     </head>
     <body>
         Hello World
         <div id="app">
             {{ message }}
+<hello></hello>
         </div>
-        <hello />
     </body>
     <script>
+        var Hello =  httpVueLoader('/components/Hello.vue')
 
         var app = new Vue({
   el: '#app',
+  components:{
+    'Hello': Hello
+  },
   data: {
     message: 'You loaded this page on ' + new Date().toLocaleString()
   }
