@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
       owner: DataTypes.STRING
     })
   
-   Vte.associate = function (models) {
+   Vote.associate = function (models) {
         Vote.belongsTo(models.Answer)
     }
   

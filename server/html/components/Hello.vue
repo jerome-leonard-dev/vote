@@ -1,13 +1,13 @@
 <template>
-    <p>{{ texte }}Compagnie! </p>
+    <p>{{ texte }} compagnie! </p>
 </template>
 
 <script>
-export default {
-    data() {
-return {
-texte:"1234"
-}
-}
-}
+    module.exports = {
+        data: function() {
+            return {
+                texte:'salut'
+            }
+        }   
+    }
 </script>
