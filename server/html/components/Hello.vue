@@ -1,7 +1,7 @@
 <template>
     <div>
-        <p>{{ message }} compagnie! </p>
-        <p>{{ reponse }}</p>
+        <p>Hello World</p>
+        <p>{{ message }}<br />{{ uuid }}</p>
     </div>
 </template>
 
@@ -9,23 +9,22 @@
   module.exports = {
     data () {
       return {
-        message: 'bonjour !',
-        reponse: 'toto'
+        message: 'You loaded this page on ' + new Date().toLocaleString(),
+        uuid: localStorage.getItem('uuid')
       }
     },
     mounted () {
-        axios({
-            "method": "GET",
-            "url": "api/session"
-        }).then(response => {
-              this.reponse = response.data
-              console.log(response);
-        }).catch(response=>{
-          console.log('catch')
-          console.log(response)
-        }).then(()=>{
-          console.log('finally')
-        })
-    }
+        if( !localStorage.getItem('uuid')){
+          localStorage.setItem( 'uuid', this.getUUID())
+        }
+    },
+        methods: {
+          getUUID: function() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+              var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+              return v.toString(16);
+            })
+          }
+        }
   }
 </script>

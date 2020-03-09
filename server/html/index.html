@@ -3,40 +3,29 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/http-vue-loader"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     </head>
     <body>
-        Hello World
-        <div id="app">
-            {{ message }}
-
-{{test  }}
-            <hello></hello>
-        </div>
+      <div id="app">
+        <hello />
+        <app></app>
+      </div>
     </body>
     <script>
       var Hello =  httpVueLoader('/components/Hello.vue')
+      var App =  httpVueLoader('/components/App.vue')
       
-      var Session =  httpVueLoader('/components/Session.vue')
-
       var app = new Vue({
         el: '#app',
+        vuetify: new Vuetify(),
         components:{
           'Hello': Hello,
-          'Session': Session
+          'App': App
         },
         data: {
-          message: 'You loaded this page on ' + new Date().toLocaleString(),
-          data: null
-          test:'init'
         },
-        mounted: {
-          test=this.$root.$data.test
-        },
-        destroyed:{
-if(!this.$root.$data.test){
-this.$root.$data.test = 'testok'
-}
-         }
+        mounted: function() {
+        }
       })
     </script>
 </html>
