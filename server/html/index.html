@@ -8,20 +8,35 @@
         Hello World
         <div id="app">
             {{ message }}
+
+{{test  }}
             <hello></hello>
         </div>
     </body>
     <script>
-        var Hello =  httpVueLoader('/components/Hello.vue')
+      var Hello =  httpVueLoader('/components/Hello.vue')
+      
+      var Session =  httpVueLoader('/components/Session.vue')
 
-        var app = new Vue({
-  el: '#app',
-  components:{
-    'Hello': Hello
-  },
-  data: {
-    message: 'You loaded this page on ' + new Date().toLocaleString()
-  }
-})
+      var app = new Vue({
+        el: '#app',
+        components:{
+          'Hello': Hello,
+          'Session': Session
+        },
+        data: {
+          message: 'You loaded this page on ' + new Date().toLocaleString(),
+          data: null
+          test:'init'
+        },
+        mounted: {
+          test=this.$root.$data.test
+        },
+        destroyed:{
+if(!this.$root.$data.test){
+this.$root.$data.test = 'testok'
+}
+         }
+      })
     </script>
 </html>

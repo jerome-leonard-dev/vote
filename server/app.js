@@ -17,15 +17,6 @@ app.use(cors())
 
 app.use(express.static('html'));
 
-app.get('/api/test', function(req,res){
-    res.send(
-        [{
-          title: "Hello World!",
-          description: "Hello World!"
-        }]
-    );
-});
-
 app.get('/api/session/:sessionId',SessionController.get);
 app.get('/api/session',SessionController.list);
 app.post('/api/session',SessionController.create);
