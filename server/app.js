@@ -30,7 +30,6 @@ app.get('/api/answer',AnswerController.list);
 app.post('/api/answer',AnswerController.create);
 app.put('/api/answer/:answerId',AnswerController.update);
 
-
 sequelize.sync({force: false})
   .then(() => {
     const port = process.env.PORT || 8080

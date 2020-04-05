@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Hello World</p>
+        <p>Salut la compagnie</p>
         <p>{{ message }}<br />{{ uuid }}</p>
     </div>
 </template>
